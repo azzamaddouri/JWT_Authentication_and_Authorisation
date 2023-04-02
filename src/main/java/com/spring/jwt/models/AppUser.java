@@ -23,6 +23,6 @@ public class AppUser {
     private String password;
 
     @ManyToMany(fetch= FetchType.EAGER  /*There's noway I load user without loading his role*/)
-    private Collection<Role> roles=new ArrayList<>();
+    private Collection<AppRole> roles=new ArrayList<>();
 
 }

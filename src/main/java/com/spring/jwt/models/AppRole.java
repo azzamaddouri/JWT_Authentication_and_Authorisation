@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 import static jakarta.persistence.GenerationType.AUTO;
 
 @Entity @Data @NoArgsConstructor @AllArgsConstructor
-public class Role {
+public class AppRole {
     @Id @GeneratedValue(strategy = AUTO)
     private Long id;
     private String name;
