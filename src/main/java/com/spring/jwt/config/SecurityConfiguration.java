@@ -18,7 +18,7 @@ public class SecurityConfiguration {
     private final AuthenticationProvider authenticationProvider;
 
     @Bean
-public SecurityFilterChain securityFilterChain(HttpSecurity http)throws Exception{
+    public SecurityFilterChain securityFilterChain(HttpSecurity http)throws Exception{
     http.csrf().disable().authorizeHttpRequests().requestMatchers("/api/v1/auth/**") /* I want to whitelist this list and authorize all the requests within this list but any other request should be authenticated */
             .permitAll().anyRequest().authenticated().and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and().authenticationProvider(authenticationProvider).addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)/* Create a session for each request */; // Disable csrf verification
