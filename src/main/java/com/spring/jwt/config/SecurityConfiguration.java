@@ -19,7 +19,7 @@ public class SecurityConfiguration {
 
     @Bean
 public SecurityFilterChain securityFilterChain(HttpSecurity http)throws Exception{
-    http.csrf().disable().authorizeHttpRequests().requestMatchers("") /* I want to whitelist this list and authorize all the requests within this list but any other request should be authenticated */
+    http.csrf().disable().authorizeHttpRequests().requestMatchers("/api/v1/auth/**") /* I want to whitelist this list and authorize all the requests within this list but any other request should be authenticated */
             .permitAll().anyRequest().authenticated().and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and().authenticationProvider(authenticationProvider).addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)/* Create a session for each request */; // Disable csrf verification
     // Now we will implement the real configuration , don't need the JWT token in these cases : Create an account
